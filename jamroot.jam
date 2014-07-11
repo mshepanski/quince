@@ -1,0 +1,21 @@
+import path ;
+
+path-constant here : . ;
+
+requirements =
+	<toolset>gcc:<cxxflags>"-std=c++11"
+	<toolset>clang:<cxxflags>"-Wall -Wno-overloaded-virtual -std=c++11"
+	<include>$(here)/include
+	<library>/boost//system
+	<library>/boost//filesystem
+	<library>/boost//thread
+	;
+
+project quince
+	: usage-requirements $(requirements)
+	;
+
+lib quince
+	: [ path.glob-tree $(here)/src : *.cpp ]
+	: $(requirements) <threading>multi <toolset>msvc:<link>static
+	;
