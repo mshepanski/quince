@@ -61,7 +61,7 @@ protected:
     general_table(
         const database &db,
         const std::string &name,
-        boost::optional<const mapping_customization &> mc = boost::none
+        const boost::optional<mapping_customization> &mc = boost::none
     ) :
         table_base(db, name, clone_or_null(mc), (Value *)nullptr),
         _value_mapper(dynamic_cast<const value_mapper &>(get_value_mapper_base()))
@@ -72,7 +72,7 @@ protected:
         const database &db,
         const std::string &name,
         PtrToKeyMember ptkm,
-        boost::optional<const mapping_customization &> mc = boost::none
+        const boost::optional<mapping_customization> &mc = boost::none
     ) :
         general_table<Value>(db, name, mc)
     {
@@ -127,7 +127,7 @@ public:
     table(
         const database &db,
         const std::string &name,
-        boost::optional<const mapping_customization &> mc = boost::none
+        const boost::optional<mapping_customization> &mc = boost::none
     ) :
         general_table<Value>(db, name, mc)
     {}
@@ -137,7 +137,7 @@ public:
         const database &db,
         const std::string &name,
         PtrToKeyMember ptkm,
-        boost::optional<const mapping_customization &> mc = boost::none
+        const boost::optional<mapping_customization > &mc = boost::none
     ) :
         general_table<Value>(db, name, ptkm, mc)
     {}
@@ -179,7 +179,7 @@ public:
     serial_table(
         const database &db,
         const std::string &name,
-        boost::optional<const mapping_customization &> mc = boost::none
+        const boost::optional<mapping_customization> &mc = boost::none
     ) :
         general_table<Value>(db, name, mc)
     {}
@@ -189,7 +189,7 @@ public:
         const database &db,
         const std::string &name,
         serial ValueBase::*ptr_to_key_member,
-        boost::optional<const mapping_customization &> mc = boost::none
+        const boost::optional<mapping_customization> &mc = boost::none
     ) :
         general_table<Value>(db, name, ptr_to_key_member, mc)
     {

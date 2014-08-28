@@ -70,7 +70,7 @@ column_type cell::type() const {
 }
 
 bool cell::has_value() const {
-    return _type;
+    return bool(_type);
 }
 
 const void *cell::data() const {

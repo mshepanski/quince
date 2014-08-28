@@ -38,7 +38,7 @@ public:
 
     void clear()            { _value = boost::none; }
     void assign(int64_t v)  { _value = v; }
-    bool has_value() const  { return _value; }
+    bool has_value() const  { return bool(_value); }
     int64_t value() const   { return *_value; }
 
     boost::optional<serial> to_optional() const {

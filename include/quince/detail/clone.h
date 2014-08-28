@@ -48,7 +48,7 @@ clone(const T &object) {
 
 template<typename T>
 std::unique_ptr<T>
-clone_or_null(boost::optional<const T &> object) {
+clone_or_null(const boost::optional<T> &object) {
     if (object) return clone(*object);
     else        return nullptr;
 }

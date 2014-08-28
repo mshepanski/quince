@@ -35,7 +35,7 @@ abstract_mapper_base::abstract_mapper_base(const boost::optional<std::string> &n
 
 bool
 abstract_mapper_base::has_name() const {
-    return _name;
+    return bool(_name);
 }
 
 string
