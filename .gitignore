@@ -4,8 +4,9 @@
 *.vcxproj
 *.vcxproj.*
 
-# Temporary command-line files
+# Temporary bjam artefacts
 *.rsp
+project-cache.jam
 
 # Compiled Object files
 *.slo
