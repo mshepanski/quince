@@ -12,6 +12,7 @@
 #include <vector>
 #include <boost/optional.hpp>
 #include <quince/serial.h>
+#include <quince/detail/timestamp.h>
 
 
 /*
@@ -33,6 +34,7 @@ enum class column_type {
     floating_point,
     double_precision,
     string,
+    timestamp,
     byte_vector,
     none
 };
@@ -59,6 +61,7 @@ QUINCE_SPECIFY_COLUMN_TYPE(serial,                  column_type::big_serial)
 QUINCE_SPECIFY_COLUMN_TYPE(float,                   column_type::floating_point)
 QUINCE_SPECIFY_COLUMN_TYPE(double,                  column_type::double_precision)
 QUINCE_SPECIFY_COLUMN_TYPE(std::string,             column_type::string)
+QUINCE_SPECIFY_COLUMN_TYPE(quince::timestamp,       column_type::timestamp)
 QUINCE_SPECIFY_COLUMN_TYPE(std::vector<uint8_t>,    column_type::byte_vector)
 QUINCE_SPECIFY_COLUMN_TYPE(boost::none_t,           column_type::none)
 

@@ -107,6 +107,7 @@ public:
     virtual void write_no_limit() = 0;
     virtual void write_limit(uint32_t);
     virtual void write_offset(uint32_t);
+    virtual void write_select_list_item(const column_mapper &);
     virtual void write_select_list(const abstract_column_sequence &);
     virtual void write_group_by(const std::vector<const abstract_mapper_base *> &);
     virtual void write_ordered_by(const std::vector<const abstract_mapper_base *> &);
@@ -183,6 +184,7 @@ public:
     const database &get_database() const    { return *_database; }
     const row &get_input() const            { return _input; }
     const std::string &get_text() const     { return _text; }
+    const bool nested_select() const        { return _nested_select; }
 
     bool alias_is_wanted(column_id) const;
     bool alias_is_defined(column_id) const;
@@ -265,6 +267,15 @@ public:
         additional_aliased_columns_scope(sql &, const column_id_set &additional_aliaseds);
     };
 
+    class nested_select_scope : private boost::noncopyable {
+    public:
+        explicit nested_select_scope(sql &);
+        ~nested_select_scope();
+    private:
+        sql &_command;
+        const bool _pending;
+    };
+
     class expression_restriction_scope : private boost::noncopyable {
     public:
         expression_restriction_scope(sql &, const std::string &implicit_table);
@@ -324,6 +335,7 @@ private:
     std::string _text;
     universalizable_column_id_set _wanted_aliases;
     column_id_set _aliased_columns;
+    bool _nested_select;
     boost::optional<std::string> _implicit_table;
     uint32_t _next_subquery_alias;
 };

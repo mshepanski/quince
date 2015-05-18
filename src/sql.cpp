@@ -36,6 +36,7 @@ sql::sql(const database &db) :
     _database(&db),
     _input(&db),
     _wanted_aliases(universalizable_column_id_set::universal()),
+    _nested_select(false),
     _implicit_table(boost::none),
     _next_subquery_alias(0)
 {}
@@ -665,7 +666,6 @@ sql::additional_wanted_aliases_scope::additional_wanted_aliases_scope(
 }
 
 
-
 sql::aliased_columns_scope::aliased_columns_scope(sql &cmd, const column_id_set &aliaseds) :
     aliased_columns_scope(cmd)
 {
@@ -691,6 +691,19 @@ sql::additional_aliased_columns_scope::additional_aliased_columns_scope(
     add_to_set(cmd._aliased_columns, additional_aliaseds);
 }
 
+
+sql::nested_select_scope::nested_select_scope(sql &cmd) :
+    _command(cmd),
+    _pending(cmd._nested_select)
+{
+    _command._nested_select = true;
+}
+
+sql::nested_select_scope::~nested_select_scope() {
+    _command._nested_select = _pending;
+}
+
+
 sql::expression_restriction_scope::expression_restriction_scope(sql &cmd, const string &implicit_table) :
     _command(cmd)
 {
@@ -708,17 +721,22 @@ const string sql::unary_minus_operator = "-";
 
 
 void
+sql::write_select_list_item(const column_mapper &c) {
+    if (alias_is_defined(c.id()))
+        write(c.alias());
+    else {
+        c.write_expression(*this);
+        write(" AS " + c.alias());
+    }
+}
+
+void
 sql::write_select_list(const abstract_column_sequence &column_sequence) {
     comma_separated_list_scope list_scope(*this);
     column_sequence.for_each_column([&](const column_mapper &c) {
         if (alias_is_wanted(c.id())) {
             list_scope.start_item();
-            if (alias_is_defined(c.id()))
-                write(c.alias());
-            else {
-                write_evaluation(c);
-                write(" AS " + c.alias());
-            }
+            write_select_list_item(c);
         }
     });
     if (! list_scope.has_begun())
@@ -819,7 +837,10 @@ void
 sql::write_subquery_exprn(const query_base &query) {
     assert(!_implicit_table);
     write("(");
-    query.write_maximal_select(*this);
+    {
+        nested_select_scope nested(*this);
+        query.write_maximal_select(*this);
+    }
     write(")");
 }
 

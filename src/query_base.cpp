@@ -56,7 +56,10 @@ query_base::fetch_row(const session &s) const {
 void
 query_base::write_table_reference(sql &cmd) const {
     cmd.write("(");
-    write_select(cmd);
+    {
+        sql::nested_select_scope nested(cmd);
+        write_select(cmd);
+    }
     cmd.write(") AS ");
     cmd.write_next_subquery_alias();
 }

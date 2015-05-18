@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <type_traits>
+#include <boost/date_time/posix_time/posix_time_types.hpp>
 #include <quince/serial.h>
 #include <quince/detail/column_type.h>
 #include <quince/mappers/detail/static_mapper_type.h>
@@ -48,7 +49,9 @@ class is_polymorphically_mapped : public std::integral_constant<
         std::is_arithmetic<T>::value
     ||  std::is_same<T, serial>::value
     ||  std::is_same<T, std::string>::value
+    ||  std::is_same<T, timestamp>::value
     ||  std::is_same<T, std::vector<uint8_t>>::value
+    ||  std::is_same<T, boost::posix_time::ptime>::value
     ||  std::is_empty<T>::value  // for types defined by QUINCE_DEFINE_SERVER_ONLY_TYPE
 >
 {};

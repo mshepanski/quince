@@ -32,7 +32,7 @@ public:
     explicit cell(const CxxType &value) {
         set(value);
     }
-
+ 
     void clear();
 
     template<typename CxxType>
@@ -43,7 +43,7 @@ public:
     }
 
     void set(const std::string &);
-
+    void set(const timestamp &);
     void set(const byte_vector &);
 
     template<typename CxxType>
@@ -65,7 +65,7 @@ public:
     }
 
     void get(std::string &) const;
-
+    void get(timestamp &) const;
     void get(byte_vector &) const;
 
     column_type type() const;
