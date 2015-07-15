@@ -66,7 +66,7 @@ public:
 
     virtual ~sql() {}
 
-    virtual void write(const std::string &);
+    void write(const std::string &);
 
     virtual void write_quoted(const std::string &);
     virtual void write_quoted(const binomen &);
@@ -179,8 +179,6 @@ public:
 
     virtual void write_select_none(const binomen &table);
 
-    void attach_cell(const cell &);
-
     const database &get_database() const    { return *_database; }
     const row &get_input() const            { return _input; }
     const std::string &get_text() const     { return _text; }
@@ -288,6 +286,10 @@ protected:
     explicit sql(const database &);
 
     typedef std::function<void(sql &)> thunk;
+    
+    void attach_cell(const cell &);
+
+    virtual void attach_value(const cell &);
 
     virtual void write_parenthesized_persistent_column_list(
         const abstract_mapper_base &,
@@ -328,6 +330,7 @@ protected:
 
     static std::string strict_relop(relation);
     virtual std::string next_placeholder() = 0;
+    virtual std::string next_value_reference(const cell &);
 
 private:
     const database *_database;

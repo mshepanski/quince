@@ -159,10 +159,20 @@ sql::write_evaluation(const column_mapper &column) {
         column.write_expression(*this);
 }
 
+string
+sql::next_value_reference(const cell &value) {
+    return next_placeholder();
+}
+
+void
+sql::attach_value(const cell &value) {
+    attach_cell(value);
+}
+
 void
 sql::write_value(const cell &value) {
-    write(next_placeholder());
-    attach_cell(value);
+    write(next_value_reference(value));
+    attach_value(value);
 }
 
 void
@@ -320,11 +330,12 @@ sql::write_extrinsic_comparison(relation r, const abstract_column_sequence &lhs,
             cmd.write_evaluation(c);
         });
 
-        const string placeholder = next_placeholder();
+        const cell &value = *rhs.find_cell(c.name());
+        const string r = next_value_reference(value);
         rhs_thunks.push_back([=](sql &cmd) {
-            write(placeholder);
+            write(r);
         });
-        attach_cell(*rhs.find_cell(c.name()));
+        attach_value(value);
     });
 
     write_lexicographic_comparison(r, lhs_thunks, rhs_thunks);
