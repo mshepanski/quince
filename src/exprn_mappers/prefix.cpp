@@ -9,7 +9,6 @@
 #include <quince/query.h>
 
 using boost::optional;
-using std::make_unique;
 using std::string;
 using std::unique_ptr;
 
@@ -50,7 +49,7 @@ make_prefix_expressionist(
         }
     };
 
-    return make_unique<expressionist>(op, arg);
+    return quince::make_unique<expressionist>(op, arg);
 }
 
 }

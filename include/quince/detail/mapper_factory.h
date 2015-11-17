@@ -37,7 +37,7 @@ public:
         std::unique_ptr<exposed_mapper_type<T>>
     >::type
     create(const boost::optional<std::string> &name) const {
-        return std::make_unique<static_mapper_type<T>>(name, *this);
+        return quince::make_unique<static_mapper_type<T>>(name, *this);
     }
 
     template<typename T>

@@ -55,7 +55,7 @@ make_extrinsic_comparison_expressionist(
     std::unique_ptr<abstract_mapper<T>> lhs,
     const T &rhs
 ) {
-    return std::make_unique<extrinsic_comparison_expressionist<T>>(r, lhs, rhs);
+    return quince::make_unique<extrinsic_comparison_expressionist<T>>(r, lhs, rhs);
 }
 
 std::unique_ptr<const abstract_expressionist>

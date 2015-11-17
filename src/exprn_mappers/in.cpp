@@ -9,7 +9,6 @@
 #include <quince/exprn_mappers/in.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::unique_ptr;
 using std::vector;
 
@@ -49,7 +48,7 @@ make_in_expressionist(
         }
     };
 
-    return make_unique<expressionist>(lhs, std::move(rhs));
+    return quince::make_unique<expressionist>(lhs, std::move(rhs));
 }
 
 
@@ -74,7 +73,7 @@ make_in_expressionist(
         virtual column_id_set imports() const override          { return set_union(_lhs.imports(), _rhs.imports()); }
     };
 
-    return make_unique<expressionist>(lhs, rhs);
+    return quince::make_unique<expressionist>(lhs, rhs);
 }
 
 }

@@ -83,7 +83,7 @@ The following is what it expands into, minus complications 1 and 2, and with:
        
         virtual std::unique_ptr<cloneable>
         clone_impl() const override {
-            return std::make_unique<QUINCE_MAPPER_point>(*this);
+            return quince::make_unique<QUINCE_MAPPER_point>(*this);
         }
 
         template<typename DelayInstantiation = void>
@@ -193,7 +193,7 @@ The following is what it expands into, minus complications 1 and 2, and with:
         \
         virtual std::unique_ptr<cloneable> \
         clone_impl() const override { \
-            return std::make_unique<MAPPER_TYPE_NAME>(*this); \
+            return quince::make_unique<MAPPER_TYPE_NAME>(*this); \
         } \
         \
         virtual void \

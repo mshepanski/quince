@@ -119,7 +119,7 @@ protected:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<typed_class_mapper_base<CxxClassType>>(*this);
+        return quince::make_unique<typed_class_mapper_base<CxxClassType>>(*this);
     }
 
     template<typename CxxMemberType>
@@ -131,7 +131,7 @@ protected:
     ) {
         auto &result = class_mapper_base::add<CxxMemberType>(member_name, creator);
         _member_correspondences.push_back(
-            &own(std::make_unique<member_correspondence<CxxMemberType>>(ptr_to_member, result))
+            &own(quince::make_unique<member_correspondence<CxxMemberType>>(ptr_to_member, result))
         );
         return result;
     }
@@ -146,7 +146,7 @@ protected:
 
         const ChildMapper &result = class_mapper_base::adopt_member(mapper);
         _member_correspondences.push_back(
-            &own(std::make_unique<member_correspondence<cxx_member_type>>(ptr_to_member, result))
+            &own(quince::make_unique<member_correspondence<cxx_member_type>>(ptr_to_member, result))
         );
         return result;
     }

@@ -8,7 +8,6 @@
 #include <quince/exprn_mappers/detail/collective_comparison.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::unique_ptr;
 
 
@@ -39,7 +38,7 @@ make_collective_comparison_expressionist(
         virtual column_id_set imports() const override          { return set_union(_lhs.imports(), _rhs.get_query().imports()); }
     };
 
-    return make_unique<expressionist>(r, lhs, rhs);
+    return quince::make_unique<expressionist>(r, lhs, rhs);
 }
 
 }

@@ -31,7 +31,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<reinterpret_cast_mapper<NewCxxType, OldMapper, Offset>>(*this);
+        return quince::make_unique<reinterpret_cast_mapper<NewCxxType, OldMapper, Offset>>(*this);
     }
 
     virtual void

@@ -11,6 +11,7 @@
 #include <quince/detail/abstract_query.h>
 #include <quince/detail/compiler_specific.h>
 #include <quince/detail/query_base.h>
+#include <quince/detail/util.h>
 #include <quince/exprn_mappers/in.h>
 #include <quince/exprn_mappers/functions.h>
 #include <quince/database.h>
@@ -181,7 +182,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<query<Value>>(*this);
+        return quince::make_unique<query<Value>>(*this);
     }
 
 private:
@@ -362,7 +363,7 @@ private:
     advance() {
         std::unique_ptr<Value> new_value;
         if (const row *row = query_iterator_base::advance()) {
-            new_value = std::make_unique<Value>();
+            new_value = quince::make_unique<Value>();
             _mapper->from_row(*row, *new_value);
         }
         _value.reset(new_value.release());

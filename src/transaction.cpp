@@ -11,7 +11,6 @@
 #include <quince/detail/compiler_specific.h>
 
 using boost::format;
-using std::make_unique;
 using std::shared_ptr;
 using std::string;
 using std::unique_ptr;
@@ -208,9 +207,9 @@ transaction::current_for(const database &database) {
 unique_ptr<transaction::impl>
 transaction::new_impl(const database &database) {
     if (const transaction *current_for_db = current_for(database))
-        return make_unique<inner>(*current_for_db->_impl);
+        return quince::make_unique<inner>(*current_for_db->_impl);
     else
-        return make_unique<outermost>(database);
+        return quince::make_unique<outermost>(database);
 }
 
 QUINCE_STATIC_THREADLOCAL const transaction *transaction::_current = nullptr;

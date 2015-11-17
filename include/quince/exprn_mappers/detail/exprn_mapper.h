@@ -134,7 +134,7 @@ private:
     template<typename T>
     std::unique_ptr<const abstract_expressionist>
     make_value_expressionist(const T &value) {
-        return std::make_unique<value_expressionist<T>>(value);
+        return quince::make_unique<value_expressionist<T>>(value);
     }
 
     boost::optional<Return> _a_priori_value;
@@ -163,7 +163,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<exprn_mapper<Return>>(*this);
+        return quince::make_unique<exprn_mapper<Return>>(*this);
     }
 };
 
@@ -214,7 +214,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<exprn_mapper<return_type>>(*this);
+        return quince::make_unique<exprn_mapper<return_type>>(*this);
     }
 
     virtual const exprn_mapper<Content> &
@@ -276,7 +276,7 @@ make_new_mapper(
     const T &value,
     typename std::enable_if<! std::is_base_of<abstract_mapper_base, T>::value>::type * = nullptr
 ) {
-    return std::make_unique<exprn_mapper<T>>(value);
+    return quince::make_unique<exprn_mapper<T>>(value);
 }
 
 inline std::unique_ptr<abstract_mapper<std::string>>

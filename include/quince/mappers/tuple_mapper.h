@@ -107,7 +107,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<tuple_mapper<Es...>>(*this);
+        return quince::make_unique<tuple_mapper<Es...>>(*this);
     }
 
     // May reintroduce this one day when more STL implementations support the corresponding feature

@@ -82,7 +82,7 @@ protected:
     template<typename... T>
     void
     specify_key(const abstract_mapper<T> &... key_mapper_parts) {
-        specify_key_impl(std::make_unique<tuple_mapper<T...>>(key_mapper_parts...));
+        specify_key_impl(quince::make_unique<tuple_mapper<T...>>(key_mapper_parts...));
     }
 
 private:
@@ -143,7 +143,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<table<Value>>(*this);
+        return quince::make_unique<table<Value>>(*this);
     }
 
 private:
@@ -212,7 +212,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<serial_table<Value>>(*this);
+        return quince::make_unique<serial_table<Value>>(*this);
     }
 
 private:

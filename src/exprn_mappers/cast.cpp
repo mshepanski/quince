@@ -7,7 +7,6 @@
 #include <quince/exprn_mappers/cast.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::unique_ptr;
 
 
@@ -41,7 +40,7 @@ make_cast_expressionist(
         }
     };
 
-    return make_unique<expressionist>(arg, ctf);
+    return quince::make_unique<expressionist>(arg, ctf);
 }
 
 }

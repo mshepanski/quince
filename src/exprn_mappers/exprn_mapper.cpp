@@ -11,7 +11,6 @@
 
 using boost::optional;
 using std::unique_ptr;
-using std::make_unique;
 using std::string;
 using std::vector;
 
@@ -77,7 +76,7 @@ exprn_mapper_base::make_delegating_expressionist(
         virtual column_id_set imports() const override          { return _delegate.imports(); }
     };
 
-    return make_unique<expressionist>(delegate);
+    return quince::make_unique<expressionist>(delegate);
 }
 
 std::pair<const abstract_mapper_base *, bool>

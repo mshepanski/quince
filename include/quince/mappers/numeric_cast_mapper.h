@@ -35,7 +35,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<numeric_cast_mapper<NewCxxType, OldMapper>>(*this);
+        return quince::make_unique<numeric_cast_mapper<NewCxxType, OldMapper>>(*this);
     }
 
     virtual void from_row(const row &src, NewCxxType &dest) const override {

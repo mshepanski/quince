@@ -92,7 +92,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<table_alias<Value>>(*this);
+        return quince::make_unique<table_alias<Value>>(*this);
     }
 
 private:

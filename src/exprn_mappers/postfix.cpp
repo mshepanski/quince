@@ -8,7 +8,6 @@
 #include <quince/exprn_mappers/detail/postfix.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::string;
 using std::unique_ptr;
 
@@ -37,7 +36,7 @@ make_postfix_expressionist(
         virtual column_id_set imports() const override          { return _operand.imports(); }
     };
 
-    return make_unique<expressionist>(op, operand);
+    return quince::make_unique<expressionist>(op, operand);
 }
 
 }

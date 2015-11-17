@@ -8,7 +8,6 @@
 #include <quince/exprn_mappers/detail/is_null.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::unique_ptr;
 
 
@@ -29,7 +28,7 @@ make_is_null_expressionist(
         virtual column_id_set imports() const override          { return _arg.imports(); }
     };
 
-    return make_unique<expressionist>(arg);
+    return quince::make_unique<expressionist>(arg);
 }
 
 predicate

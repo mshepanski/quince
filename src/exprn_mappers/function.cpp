@@ -8,7 +8,6 @@
 #include <quince/exprn_mappers/function.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::string;
 using std::unique_ptr;
 using std::vector;
@@ -50,7 +49,7 @@ make_function_call_expressionist(
         }
     };
 
-    return make_unique<expressionist>(function_name, std::move(args));
+    return quince::make_unique<expressionist>(function_name, std::move(args));
 }
 
 }

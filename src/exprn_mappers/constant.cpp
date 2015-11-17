@@ -9,7 +9,6 @@
 #include <quince/exprn_mappers/detail/exprn_mapper.h>
 #include <quince/query.h>
 
-using std::make_unique;
 using std::string;
 using std::unique_ptr;
 
@@ -41,7 +40,7 @@ make_constant_expressionist(
         }
     };
 
-    return make_unique<expressionist>(sql_constant_exprn);
+    return quince::make_unique<expressionist>(sql_constant_exprn);
 }
 
 }

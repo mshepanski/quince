@@ -8,7 +8,6 @@
 #include <quince/query.h>
 
 using boost::optional;
-using std::make_unique;
 using std::unique_ptr;
 using std::vector;
 
@@ -82,7 +81,7 @@ make_case_expressionist(
         }
     };
 
-    return make_unique<expressionist>(switch_, clauses, backstop);
+    return quince::make_unique<expressionist>(switch_, clauses, backstop);
 }
 
 }

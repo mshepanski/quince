@@ -19,7 +19,6 @@
 
 using boost::format;
 using boost::optional;
-using std::make_unique;
 using std::string;
 using std::shared_ptr;
 using std::unique_ptr;
@@ -302,7 +301,7 @@ query_base::add_fake_combine(combination_type type, const query_base &rhs) {
 void
 query_base::add_real_combine(combination_type type, bool all, const query_base &rhs) {
     _combinations.push_back(
-        &own(make_unique<combination>(type, all, clone(rhs)))
+        &own(quince::make_unique<combination>(type, all, clone(rhs)))
     );
 }
 

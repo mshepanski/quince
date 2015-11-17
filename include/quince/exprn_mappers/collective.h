@@ -47,7 +47,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<collective<T>>(*this);
+        return quince::make_unique<collective<T>>(*this);
     }
 };
 

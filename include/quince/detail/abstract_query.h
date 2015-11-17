@@ -60,7 +60,7 @@ protected:
     //
     std::unique_ptr<query<Value>>
     unique_wrapped() const {
-        return std::make_unique<query<Value>>(*this);
+        return quince::make_unique<query<Value>>(*this);
     }
 
 public:

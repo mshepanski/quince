@@ -135,7 +135,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<junction<Collector>>(*this);
+        return quince::make_unique<junction<Collector>>(*this);
     }
 
 private:
@@ -180,7 +180,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<conditional_junction<Collector>>(*this);
+        return quince::make_unique<conditional_junction<Collector>>(*this);
     }
 
 private:

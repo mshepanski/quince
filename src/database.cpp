@@ -11,7 +11,6 @@
 
 using boost::optional;
 using std::lock_guard;
-using std::make_unique;
 using std::mutex;
 using std::string;
 using std::unique_ptr;
@@ -70,7 +69,7 @@ database::database(
     unique_ptr<const mapping_customization> for_dbms
 ) :
     _mapper_factory(own_or_null(for_db), own_or_null(for_dbms)),
-    _sessions(make_unique<session_pool>(*this))
+    _sessions(quince::make_unique<session_pool>(*this))
 {}
 
 database::~database()

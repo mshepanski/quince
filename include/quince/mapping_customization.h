@@ -35,7 +35,7 @@ public:
 
         _custom_makers[typeid(T)] =
             [](const boost::optional<std::string> &name, const mapper_factory &creator) {
-                return std::make_unique<MapperType>(name, creator);
+                return quince::make_unique<MapperType>(name, creator);
             };
     }
 
@@ -44,7 +44,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<mapping_customization>(*this);
+        return quince::make_unique<mapping_customization>(*this);
     }
 
 private:

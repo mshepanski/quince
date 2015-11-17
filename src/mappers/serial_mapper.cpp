@@ -10,7 +10,6 @@
 #include <quince/exprn_mappers/detail/exprn_mapper.h>
 
 using boost::optional;
-using std::make_unique;
 using std::string;
 using std::unique_ptr;
 
@@ -25,7 +24,7 @@ serial_mapper::serial_mapper(const optional<string> &name, const mapper_factory 
 
 unique_ptr<cloneable>
 serial_mapper::clone_impl() const {
-    return make_unique<serial_mapper>(*this);
+    return quince::make_unique<serial_mapper>(*this);
 }
 
 void

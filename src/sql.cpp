@@ -24,7 +24,6 @@ using boost::format;
 using boost::optional;
 using std::pair;
 using std::string;
-using std::make_unique;
 using std::to_string;
 using std::unique_ptr;
 using std::vector;

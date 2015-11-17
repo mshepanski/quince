@@ -42,7 +42,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<direct_mapper<CxxType>>(*this);
+        return quince::make_unique<direct_mapper<CxxType>>(*this);
     }
 
     virtual void

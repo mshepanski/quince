@@ -99,7 +99,7 @@ public:
 
     virtual std::unique_ptr<cloneable>
     clone_impl() const override {
-        return std::make_unique<optional_mapper<Content>>(*this);
+        return quince::make_unique<optional_mapper<Content>>(*this);
     }
 
     bool
