@@ -10,6 +10,7 @@
 #include <quince/detail/abstract_query_base.h>
 #include <quince/detail/compiler_specific.h>
 #include <quince/detail/object_id.h>
+#include <quince/detail/util.h>
 #include <quince/exprn_mappers/detail/exprn_mapper.h>
 #include <quince/mappers/optional_mapper.h>
 #include <quince/exceptions.h>

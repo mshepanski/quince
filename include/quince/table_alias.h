@@ -8,6 +8,7 @@
 
 #include <quince/detail/compiler_specific.h>
 #include <quince/detail/mapper_factory.h>
+#include <quince/detail/util.h>
 #include <quince/table.h>
 
 

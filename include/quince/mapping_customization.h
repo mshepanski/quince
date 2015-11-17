@@ -9,7 +9,6 @@
 #include <typeindex>
 #include <unordered_map>
 #include <quince/detail/clone.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/util.h>
 
 

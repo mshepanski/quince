@@ -5,8 +5,8 @@
 
 #include <assert.h>
 #include <quince/exprn_mappers/detail/exprn_mapper.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/sql.h>
+#include <quince/detail/util.h>
 #include <quince/query.h>
 
 using boost::optional;

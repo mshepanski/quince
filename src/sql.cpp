@@ -10,7 +10,6 @@
 #include <boost/optional.hpp>
 #include <quince/detail/abstract_query.h>
 #include <quince/detail/binomen.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/column_type.h>
 #include <quince/detail/junction.h>
 #include <quince/detail/query_base.h>

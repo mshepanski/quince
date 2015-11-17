@@ -13,6 +13,7 @@
 #include <quince/detail/column_type.h>
 #include <quince/detail/compiler_specific.h>
 #include <quince/detail/mapper_factory.h>
+#include <quince/detail/util.h>
 #include <quince/mappers/detail/abstract_mapper.h>
 #include <quince/mappers/detail/persistent_column_mapper.h>
 #include <quince/exprn_mappers/detail/coalesce.h>

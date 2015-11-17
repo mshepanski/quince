@@ -8,9 +8,9 @@
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
 #include <quince/database.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/query_base.h>
 #include <quince/detail/sql.h>
+#include <quince/detail/util.h>
 #include <quince/query.h>
 #include <quince/table.h>
 #include <quince/transaction.h>

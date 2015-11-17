@@ -11,6 +11,7 @@
 #include <quince/detail/abstract_query.h>
 #include <quince/detail/compiler_specific.h>
 #include <quince/detail/table_base.h>
+#include <quince/detail/util.h>
 #include <quince/mapping_customization.h>
 
 

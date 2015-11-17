@@ -7,8 +7,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <quince/detail/clone.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/object_owner.h>
+#include <quince/detail/util.h>
 #include <quince/mappers/detail/exposed_mapper_type.h>
 
 

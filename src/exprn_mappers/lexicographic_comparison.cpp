@@ -3,7 +3,7 @@
 //    (See accompanying file ../../LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <quince/detail/compiler_specific.h>
+#include <quince/detail/util.h>
 #include <quince/exprn_mappers/detail/lexicographic_comparison.h>
 #include <quince/query.h>
 

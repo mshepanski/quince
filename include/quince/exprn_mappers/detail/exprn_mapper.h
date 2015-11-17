@@ -13,6 +13,7 @@
 #include <boost/utility/base_from_member.hpp>
 #include <quince/detail/compiler_specific.h>
 #include <quince/detail/sql.h>
+#include <quince/detail/util.h>
 #include <quince/mappers/detail/abstract_mapper.h>
 #include <quince/mappers/detail/column_mapper.h>
 #include <quince/database.h>

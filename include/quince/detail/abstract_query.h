@@ -7,7 +7,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <quince/detail/abstract_query_base.h>
-#include <quince/detail/compiler_specific.h>
+#include <quince/detail/util.h>
 #include <quince/mappers/detail/exposed_mapper_type.h>
 #include <quince/exceptions.h>
 

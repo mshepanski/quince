@@ -5,7 +5,7 @@
 
 #include <memory>
 #include <quince/mappers/detail/abstract_mapper.h>
-#include <quince/detail/compiler_specific.h>
+#include <quince/detail/util.h>
 #include <quince/mappers/serial_mapper.h>
 #include <quince/exprn_mappers/detail/exprn_mapper.h>
 

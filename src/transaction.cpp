@@ -9,6 +9,7 @@
 #include <quince/detail/sql.h>
 #include <quince/transaction.h>
 #include <quince/detail/compiler_specific.h>
+#include <quince/detail/util.h>
 
 using boost::format;
 using std::shared_ptr;

@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <quince/exprn_mappers/scalar.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/query_base.h>
 #include <quince/detail/sql.h>
+#include <quince/detail/util.h>
 #include <quince/query.h>
 
 using std::unique_ptr;

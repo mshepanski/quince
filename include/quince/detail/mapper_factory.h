@@ -8,7 +8,7 @@
 
 #include <type_traits>
 #include <vector>
-#include <quince/detail/compiler_specific.h>
+#include <quince/detail/util.h>
 #include <quince/mappers/detail/exposed_mapper_type.h>
 #include <quince/mapping_customization.h>
 

@@ -6,8 +6,8 @@
 #include <boost/ptr_container/ptr_deque.hpp>
 #include <mutex>
 #include <quince/database.h>
-#include <quince/detail/compiler_specific.h>
 #include <quince/detail/session.h>
+#include <quince/detail/util.h>
 
 using boost::optional;
 using std::lock_guard;
