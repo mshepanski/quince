@@ -51,11 +51,10 @@ struct element_type<const Container> {
 template<typename ContiguousContainer>
 typename element_type<ContiguousContainer>::type *
 base_address(ContiguousContainer &a) {
-    // use boost::optional to make space for a value without the need to initialize it.
-    static boost::optional<typename element_type<ContiguousContainer>::type>
-        never_to_be_accessed = boost::none;
+    static typename element_type<ContiguousContainer>::type
+        never_to_be_accessed = ContiguousContainer::value_type();
 
-    return a.empty() ? never_to_be_accessed.get_ptr() : &a[0];
+    return a.empty() ? &never_to_be_accessed : &a[0];
 }
 
 // Define quince::make_unique(), which is just like std::make_unique(), but I don't
