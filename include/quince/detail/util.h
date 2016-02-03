@@ -52,7 +52,7 @@ template<typename ContiguousContainer>
 typename element_type<ContiguousContainer>::type *
 base_address(ContiguousContainer &a) {
     static typename element_type<ContiguousContainer>::type
-        never_to_be_accessed = ContiguousContainer::value_type();
+        never_to_be_accessed = typename ContiguousContainer::value_type();
 
     return a.empty() ? &never_to_be_accessed : &a[0];
 }
