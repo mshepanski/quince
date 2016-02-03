@@ -51,7 +51,7 @@ struct element_type<const Container> {
 template<typename ContiguousContainer>
 typename element_type<ContiguousContainer>::type *
 base_address(ContiguousContainer &a) {
-    static element_type<ContiguousContainer>::type never_to_be_accessed;
+    static typename element_type<ContiguousContainer>::type never_to_be_accessed;
 
     return a.empty() ? &never_to_be_accessed : &a[0];
 }
