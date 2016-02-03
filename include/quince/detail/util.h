@@ -30,7 +30,7 @@ struct element_type {
 
 template<typename Container>
 struct element_type<const Container> {
-    typedef typename const Container::value_type type;
+    typedef const typename Container::value_type type;
 };
 
 // Sometimes you have a contiguous container a, and you want to hand its data (without
