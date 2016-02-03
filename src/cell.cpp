@@ -5,6 +5,7 @@
 
 #include <boost/asio/detail/socket_ops.hpp>  // for htonl() etc.
 #include <quince/detail/cell.h>
+#include <quince/detail/util.h>
 
 using std::string;
 
@@ -70,7 +71,7 @@ bool cell::has_value() const {
 }
 
 const void *cell::data() const {
-    return _bytes.empty() ? nullptr : &_bytes[0];
+    return base_address(_bytes);
 }
 
 const char *cell::chars() const {
@@ -169,7 +170,7 @@ void cell::get_string(string &string) const {
 }
 
 void cell::set_string(const string &string) {
-    const uint8_t * const base = reinterpret_cast<const uint8_t *>(&string[0]);
+    const uint8_t * const base = reinterpret_cast<const uint8_t *>(base_address(string));
     const size_t size = string.size();
     _bytes.assign(base, base + size);
     _is_binary = false;
