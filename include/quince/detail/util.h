@@ -23,8 +23,42 @@
 
 namespace quince {
 
+template<typename Container>
+struct element_type {
+    typedef typename Container::value_type type;
+};
+
+template<typename Container>
+struct element_type<const Container> {
+    typedef const typename Container::value_type type;
+};
+
+// Sometimes you have a contiguous container a, and you want to hand its data (without
+// copying) to an API that wants a C-style array, i.e. base and extent.
+//
+// So you might be tempted to pass a[0], a.size(). But that's no good because
+// a[0] is a run-time error when the array is empty.
+//
+// So you might check for that case specially and pass nullptr, 0 in that case.
+// Normally that would be okay because the code you're calling will see that
+// there is not even one element, and so not try to dereference the nullptr.
+//
+// But sometimes you can't do that, because the )&^%* code you're calling interprets
+// nullptr to mean something special.
+//
+// On those occasions, pass base_address(a), a.size().
+//
+template<typename ContiguousContainer>
+typename element_type<ContiguousContainer>::type *
+base_address(ContiguousContainer &a) {
+    static typename element_type<ContiguousContainer>::type
+        never_to_be_accessed = typename ContiguousContainer::value_type();
+
+    return a.empty() ? &never_to_be_accessed : &a[0];
+}
+
 // Define quince::make_unique(), which is just like std::make_unique(), but I don't
-// want to depend on std::unique() because it's a C++14 feature, which is present
+// want to depend on std::make_unique() because it's a C++14 feature, which is present
 // in some but not all C++11 compilers.
 //
 
