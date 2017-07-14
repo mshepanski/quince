@@ -45,6 +45,11 @@ void cell::set(const time_type &src) {
     set_string(src);
 }
 
+void cell::set(const date_type &src) {
+    set_type(get_column_type<date_type>());
+    set_string(src);
+}
+
 void cell::set(const byte_vector &src) {
     set_type(get_column_type<byte_vector>());
     _bytes = src;
@@ -62,6 +67,11 @@ void cell::get(timestamp &dest) const {
 }
 
 void cell::get(time_type &dest) const {
+    check_type<string>();
+    get_string(dest);
+}
+
+void cell::get(date_type &dest) const {
     check_type<string>();
     get_string(dest);
 }
