@@ -44,6 +44,7 @@ public:
 
     void set(const std::string &);
     void set(const timestamp &);
+    void set(const time_type &);
     void set(const byte_vector &);
 
     template<typename CxxType>
@@ -66,6 +67,7 @@ public:
 
     void get(std::string &) const;
     void get(timestamp &) const;
+    void get(time_type &) const;
     void get(byte_vector &) const;
 
     column_type type() const;

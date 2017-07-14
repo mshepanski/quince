@@ -50,8 +50,10 @@ class is_polymorphically_mapped : public std::integral_constant<
     ||  std::is_same<T, serial>::value
     ||  std::is_same<T, std::string>::value
     ||  std::is_same<T, timestamp>::value
+    ||  std::is_same<T, time_type>::value
     ||  std::is_same<T, std::vector<uint8_t>>::value
     ||  std::is_same<T, boost::posix_time::ptime>::value
+    ||  std::is_same<T, boost::posix_time::time_duration>::value
     ||  std::is_empty<T>::value  // for types defined by QUINCE_DEFINE_SERVER_ONLY_TYPE
 >
 {};
