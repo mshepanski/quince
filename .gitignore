@@ -29,3 +29,15 @@ project-cache.jam
 *.exe
 *.out
 *.app
+
+# Vim: temp files
+*~
+
+# Vim: swap files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.vim
+
+# Vim: ctags/cscope files
+tags
+cscope.*
